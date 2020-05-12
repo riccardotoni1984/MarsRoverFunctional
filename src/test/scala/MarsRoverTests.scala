@@ -28,11 +28,16 @@ class MarsRoverTests extends FlatSpec{
     assert(MarsRover.execute("RMM") == "2:0:W")
   }
 
-  it should "wrap-around when at the end of the grid" in{
+  it should "wrap-around when at the end of the default grid" in{
     assert(MarsRover.execute("LM") == "9:0:E")
     assert(MarsRover.execute("LLMM") == "0:8:S")
     assert(MarsRover.execute("LLLMMMMMMMMMMM") == "1:0:W")
     assert(MarsRover.execute("MMMMMMMMMMMMMM") == "0:4:N")
+  }
+
+  it should "wrap-around when at the end of the custom grid" in{
+    assert(MarsRover.execute("LM", 15) == "14:0:E")
+    assert(MarsRover.execute("RRMMMM", 20) == "0:16:S")
   }
 
   it should "return an error if command string contains illegal character" in{

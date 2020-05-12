@@ -4,6 +4,10 @@ object MarsRover {
     commands.foldLeft(Position())((p:Position, m: Char) => move(p,m)).toString
   }
 
+  def execute(commands: String, plateauSize: Int):String = {
+    commands.foldLeft(Position(palteauSize = plateauSize))((p:Position, m: Char) => move(p,m)).toString
+  }
+
   def move(position: Position, move: Char): Position = {
       move match {
         case right if right == 'R' => rotateRight(position)
