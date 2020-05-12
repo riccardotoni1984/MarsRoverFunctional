@@ -1,0 +1,3 @@
+class IllegalCommandException extends Exception{
+
+}

@@ -35,4 +35,9 @@ class MarsRoverTests extends FlatSpec{
     assert(MarsRover.execute("MMMMMMMMMMMMMM") == "0:4:N")
   }
 
+  it should "return an error if command string contains illegal character" in{
+    intercept[IllegalCommandException]{
+      MarsRover.execute("LF")
+    }
+  }
 }

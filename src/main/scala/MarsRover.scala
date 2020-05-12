@@ -9,7 +9,7 @@ object MarsRover {
         case right if right == 'R' => rotateRight(position)
         case left if left == 'L' => rotateLeft(position)
         case move if move == 'M' => moveForward(position)
-        case _ => Position()
+        case _ => throw new IllegalCommandException
       }
   }
 
