@@ -13,65 +13,64 @@ object MarsRover {
         case right if right == 'R' => rotateRight(position)
         case left if left == 'L' => rotateLeft(position)
         case move if move == 'M' => moveForward(position)
-        case _ => {
+        case _ =>
           println(s"attempt to use illegal command($move) on position: ${position.toString}")
           position
-        }
       }
   }
 
   def rotateRight(position: Position): Position = {
     position match {
-      case facingNorth if facingNorth.direction == "N" =>
-            Position(facingNorth.x, facingNorth.y, "W", facingNorth.palteauSize)
-      case facingWest if facingWest.direction == "W" =>
-            Position(facingWest.x, facingWest.y, "S", facingWest.palteauSize)
-      case facingSouth if facingSouth.direction == "S" =>
-            Position(facingSouth.x, facingSouth.y, "E", facingSouth.palteauSize)
-      case facingEast if facingEast.direction == "E" =>
-            Position(facingEast.x, facingEast.y, "N", facingEast.palteauSize)
+      case roverFacingNorth if roverFacingNorth.direction == "N" =>
+            Position(roverFacingNorth.x, roverFacingNorth.y, "W", roverFacingNorth.palteauSize)
+      case roverFacingWest if roverFacingWest.direction == "W" =>
+            Position(roverFacingWest.x, roverFacingWest.y, "S", roverFacingWest.palteauSize)
+      case roverFacingSouth if roverFacingSouth.direction == "S" =>
+            Position(roverFacingSouth.x, roverFacingSouth.y, "E", roverFacingSouth.palteauSize)
+      case roverFacingEast if roverFacingEast.direction == "E" =>
+            Position(roverFacingEast.x, roverFacingEast.y, "N", roverFacingEast.palteauSize)
     }
   }
 
   def rotateLeft(position: Position): Position = {
     position match {
-      case facingNorth if facingNorth.direction == "N" =>
-            Position(facingNorth.x, facingNorth.y, "E", facingNorth.palteauSize)
-      case facingWest if facingWest.direction == "W" =>
-            Position(facingWest.x, facingWest.y, "N", facingWest.palteauSize)
-      case facingSouth if facingSouth.direction == "S" =>
-            Position(facingSouth.x, facingSouth.y, "W", facingSouth.palteauSize)
-      case facingEast if facingEast.direction == "E" =>
-            Position(facingEast.x, facingEast.y, "S", facingEast.palteauSize)
+      case roverFacingNorth if roverFacingNorth.direction == "N" =>
+            Position(roverFacingNorth.x, roverFacingNorth.y, "E", roverFacingNorth.palteauSize)
+      case roverFacingWest if roverFacingWest.direction == "W" =>
+            Position(roverFacingWest.x, roverFacingWest.y, "N", roverFacingWest.palteauSize)
+      case roverFacingSouth if roverFacingSouth.direction == "S" =>
+            Position(roverFacingSouth.x, roverFacingSouth.y, "W", roverFacingSouth.palteauSize)
+      case roverFacingEast if roverFacingEast.direction == "E" =>
+            Position(roverFacingEast.x, roverFacingEast.y, "S", roverFacingEast.palteauSize)
     }
   }
 
   def moveForward(position: Position): Position = {
     position match {
-      case facingNorth
-        if facingNorth.direction == "N" => Position(
-              facingNorth.x,
-              facingNorth.y % facingNorth.palteauSize +1,
+      case roverFacingNorth
+        if roverFacingNorth.direction == "N" => Position(
+              roverFacingNorth.x,
+              roverFacingNorth.y % roverFacingNorth.palteauSize +1,
               "N",
-              facingNorth.palteauSize)
-      case facingWest
-        if facingWest.direction == "W" => Position(
-              facingWest.x % facingWest.palteauSize +1,
-              facingWest.y,
+              roverFacingNorth.palteauSize)
+      case roverFacingWest
+        if roverFacingWest.direction == "W" => Position(
+              roverFacingWest.x % roverFacingWest.palteauSize +1,
+              roverFacingWest.y,
               "W",
-              facingWest.palteauSize)
-      case facingSouth
-        if facingSouth.direction == "S" => Position(
-              facingSouth.x,
-              if (facingSouth.y == 0) facingSouth.palteauSize -1 else facingSouth.y -1,
+              roverFacingWest.palteauSize)
+      case roverFacingSouth
+        if roverFacingSouth.direction == "S" => Position(
+              roverFacingSouth.x,
+              if (roverFacingSouth.y == 0) roverFacingSouth.palteauSize -1 else roverFacingSouth.y -1,
               "S",
-              facingSouth.palteauSize)
-      case facingEast
-        if facingEast.direction == "E" => Position(
-              if (facingEast.x == 0) facingEast.palteauSize -1 else facingEast.x -1,
-              facingEast.y,
+              roverFacingSouth.palteauSize)
+      case roverFacingEast
+        if roverFacingEast.direction == "E" => Position(
+              if (roverFacingEast.x == 0) roverFacingEast.palteauSize -1 else roverFacingEast.x -1,
+              roverFacingEast.y,
               "E",
-              facingEast.palteauSize)
+              roverFacingEast.palteauSize)
     }
   }
 }
