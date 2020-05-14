@@ -13,7 +13,10 @@ object MarsRover {
         case right if right == 'R' => rotateRight(position)
         case left if left == 'L' => rotateLeft(position)
         case move if move == 'M' => moveForward(position)
-        case _ => throw new IllegalCommandException
+        case _ => {
+          println(s"attempt to use illegal command($move) on position: ${position.toString}")
+          position
+        }
       }
   }
 

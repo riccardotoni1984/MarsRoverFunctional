@@ -40,9 +40,7 @@ class MarsRoverTests extends FlatSpec{
     assert(MarsRover.execute("RRMMMM", 20) == "0:16:S")
   }
 
-  it should "return an error if command string contains illegal character" in{
-    intercept[IllegalCommandException]{
-      MarsRover.execute("LF")
-    }
+  it should "ignore illegal commands" in{
+    assert(MarsRover.execute("RWRMMTTMYYYM", 20) == "0:16:S")
   }
 }
